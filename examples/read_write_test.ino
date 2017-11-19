@@ -31,24 +31,25 @@ void loop() {
 		if( !running ){
 			gb.display.println("Test End. All OK!");	
 		} else {
-			gb.display.println("SRAM read write Test");
-			gb.display.print("Address:");
-			gb.display.println(address);
+			for( int i=0; i<8; i++){
+				gb.display.print("Address:");
+				gb.display.print(address);
 			
-			data = random(256);
+				data = random(256);
 
-			// write data
-			sram.write(address,data);
+				// write data
+				sram.write(address,data);
 		
-			// read and check data
-			if( data == sram.read(address) ){
-				gb.display.println("is OK!");
-				address ++;
-				if( address == 0 ){
-					running = false;
+				// read and check data
+				if( data == sram.read(address) ){
+					gb.display.println(" is OK!");
+					address ++;
+					if( address == 0 ){
+						running = false;
+					}
+				} else {
+					gb.display.println(" is Error!");	
 				}
-			} else {
-				gb.display.println("is Error!");	
 			}
 		}
 		if(gb.buttons.pressed(BTN_C)) {
