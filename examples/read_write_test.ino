@@ -53,7 +53,7 @@ void loop() {
 			}
 		}
 		if(gb.buttons.pressed(BTN_C)) {
-			init();
+			game_init();
 			gb.titleScreen(F("SRAM Test"));
 		}
 	}
